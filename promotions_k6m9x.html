@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Promotions & Bonuses - Fortune Tower Casino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .prm_header_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid #e94560;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .prm_header_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prm_logo_section {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .prm_logo_icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .prm_nav_menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .prm_nav_item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .prm_nav_item a:hover {
+            color: #f39c12;
+        }
+
+        .prm_nav_item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e94560;
+            transition: width 0.3s ease;
+        }
+
+        .prm_nav_item a:hover::after {
+            width: 100%;
+        }
+
+        .prm_age_consent_header {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 0.8rem 1rem;
+            border-left: 4px solid #e94560;
+            font-size: 0.85rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .prm_main_content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .prm_page_title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .prm_promo_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .prm_promo_card {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 52, 96, 0.9) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prm_promo_card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(243, 156, 18, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .prm_promo_card:hover::before {
+            left: 100%;
+        }
+
+        .prm_promo_card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(233, 69, 96, 0.6);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.3);
+        }
+
+        .prm_promo_badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .prm_promo_title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin-bottom: 0.8rem;
+        }
+
+        .prm_promo_description {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .prm_promo_terms {
+            background: rgba(233, 69, 96, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #e94560;
+            margin-bottom: 1rem;
+        }
+
+        .prm_promo_terms_title {
+            color: #e94560;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .prm_promo_terms_text {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .prm_claim_button {
+            display: inline-block;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .prm_claim_button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(233, 69, 96, 0.4);
+        }
+
+        .prm_info_section {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 52, 96, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .prm_section_title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .prm_section_text {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .prm_hidden_content {
+            display: none;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            position: absolute;
+            z-index: -9999;
+        }
+
+        .prm_footer_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 3rem 2rem 1rem;
+            border-top: 3px solid #e94560;
+            margin-top: auto;
+        }
+
+        .prm_footer_container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .prm_responsible_play_footer {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #e94560;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .prm_responsible_play_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .prm_responsible_play_text {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .prm_footer_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .prm_footer_column h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .prm_footer_column ul {
+            list-style: none;
+        }
+
+        .prm_footer_column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .prm_footer_column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .prm_footer_column ul li a:hover {
+            color: #e94560;
+        }
+
+        .prm_footer_bottom {
+            border-top: 1px solid rgba(233, 69, 96, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .prm_page_title {
+                font-size: 1.8rem;
+            }
+
+            .prm_main_content {
+                padding: 1rem;
+            }
+
+            .prm_promo_grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="prm_header_wrapper">
+        <div class="prm_header_container">
+            <div class="prm_logo_section">
+                <div class="prm_logo_icon">⚡</div>
+                Fortune Tower
+            </div>
+            <ul class="prm_nav_menu">
+                <li class="prm_nav_item"><a href="index.html">Home</a></li>
+                <li class="prm_nav_item"><a href="play_game_x7k2m.html">Play Now</a></li>
+                <li class="prm_nav_item"><a href="terms_q9r4n.html">Terms</a></li>
+                <li class="prm_nav_item"><a href="privacy_w2l8p.html">Privacy</a></li>
+                <li class="prm_nav_item"><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="prm_age_consent_header">
+        ⚠️ IMPORTANT: This is a social casino for entertainment purposes only. You must be 18+ to access this site. By continuing, you confirm you are of legal age. Please play responsibly.
+    </div>
+
+    <!-- Main Content -->
+    <div class="prm_main_content">
+        <h1 class="prm_page_title">Promotions & Bonuses</h1>
+
+        <!-- Promotions Grid -->
+        <div class="prm_promo_grid">
+            <!-- Promo 1 -->
+            <div class="prm_promo_card">
+                <div class="prm_promo_badge">🎁 Welcome Bonus</div>
+                <h3 class="prm_promo_title">New Player Welcome Package</h3>
+                <p class="prm_promo_description">
+                    Get started with Fortune Tower Casino with our exclusive welcome package. Receive bonus credits on your first login and unlock special rewards.
+                </p>
+                <div class="prm_promo_terms">
+                    <div class="prm_promo_terms_title">Offer Details</div>
+                    <div class="prm_promo_terms_text">
+                        • Available for new players only<br>
+                        • Valid for 30 days<br>
+                        • No deposit required<br>
+                        • Bonus credits: 5,000
+                    </div>
+                </div>
+                <button class="prm_claim_button">Claim Now</button>
+            </div>
+
+            <!-- Promo 2 -->
+            <div class="prm_promo_card">
+                <div class="prm_promo_badge">📅 Daily Rewards</div>
+                <h3 class="prm_promo_title">Daily Login Bonuses</h3>
+                <p class="prm_promo_description">
+                    Log in every day and collect your daily rewards. The longer your streak, the bigger your bonuses! Build your collection of free credits.
+                </p>
+                <div class="prm_promo_terms">
+                    <div class="prm_promo_terms_title">Offer Details</div>
+                    <div class="prm_promo_terms_text">
+                        • Available daily<br>
+                        • Streak multiplier bonus<br>
+                        • Up to 1,000 credits daily<br>
+                        • Resets every 24 hours
+                    </div>
+                </div>
+                <button class="prm_claim_button">Collect Daily Bonus</button>
+            </div>
+
+            <!-- Promo 3 -->
+            <div class="prm_promo_card">
+                <div class="prm_promo_badge">🏆 VIP Program</div>
+                <h3 class="prm_promo_title">Exclusive VIP Membership</h3>
+                <p class="prm_promo_description">
+                    Join our VIP club and enjoy premium benefits including exclusive games, priority support, and special VIP-only promotions.
+                </p>
+                <div class="prm_promo_terms">
+                    <div class="prm_promo_terms_title">Offer Details</div>
+                    <div class="prm_promo_terms_title">
+                        • Exclusive VIP games<br>
+                        • Priority 24/7 support<br>
+                        • Monthly VIP bonuses<br>
+                        • Personal account manager
+                    </div>
+                </div>
+                <button class="prm_claim_button">Join VIP Club</button>
+            </div>
+
+            <!-- Promo 4 -->
+            <div class="prm_promo_card">
+                <div class="prm_promo_badge">🎯 Spin & Win</div>
+                <h3 class="prm_promo_title">Weekly Spin & Win Tournament</h3>
+                <p class="prm_promo_description">
+                    Participate in our weekly tournaments and compete for massive prize pools. The more you play, the higher your chances of winning!
+                </p>
+                <div class="prm_promo_terms">
+                    <div class="prm_promo_terms_title">Offer Details</div>
+                    <div class="prm_promo_terms_text">
+                        • Weekly tournaments<br>
+                        • Prize pool: 50,000 credits<br>
+                        • Top 100 winners rewarded<br>
+                        • Leaderboard rankings
+                    </div>
+                </div>
+                <button class="prm_claim_button">Join Tournament</button>
+            </div>
+
+            <!-- Promo 5 -->
+            <div class="prm_promo_card">
+                <div class="prm_promo_badge">⭐ Loyalty Rewards</div>
+                <h3 class="prm_promo_title">Loyalty Points Program</h3>
+                <p class="prm_promo_description">
+                    Earn loyalty points with every game you play. Accumulate points and redeem them for exclusive rewards and special bonuses.
+                </p>
+                <div class="prm_promo_terms">
+                    <div class="prm_promo_terms_title">Offer Details</div>
+                    <div class="prm_promo_terms_text">
+                        • 1 point per 100 credits wagered<br>
+                        • Redeem for bonus credits<br>
+                        • Exclusive item shop<br>
+                        • Never expires
+                    </div>
+                </div>
+                <button class="prm_claim_button">View Rewards</button>
+            </div>
+
+            <!-- Promo 6 -->
+            <div class="prm_promo_card">
+                <div class="prm_promo_badge">🎊 Special Events</div>
+                <h3 class="prm_promo_title">Seasonal Special Events</h3>
+                <p class="prm_promo_description">
+                    Celebrate special occasions with Fortune Tower Casino. Enjoy seasonal promotions, holiday bonuses, and limited-time special offers.
+                </p>
+                <div class="prm_promo_terms">
+                    <div class="prm_promo_terms_title">Offer Details</div>
+                    <div class="prm_promo_terms_text">
+                        • Holiday bonuses<br>
+                        • Limited-time offers<br>
+                        • Seasonal tournaments<br>
+                        • Exclusive event games
+                    </div>
+                </div>
+                <button class="prm_claim_button">View Events</button>
+            </div>
+        </div>
+
+        <!-- How Promotions Work -->
+        <div class="prm_info_section">
+            <h2 class="prm_section_title">How Our Promotions Work</h2>
+            <p class="prm_section_text">
+                Fortune Tower Casino offers a variety of promotions designed to enhance your gaming experience and reward your loyalty. Our promotional system is designed to be transparent, fair, and rewarding for all players.
+            </p>
+            <p class="prm_section_text">
+                <strong>Bonus Credits:</strong> All bonuses are provided in the form of virtual credits with no real monetary value. These credits can be used to play any game on our platform and accumulate additional credits through gameplay.
+            </p>
+            <p class="prm_section_text">
+                <strong>Promotion Terms:</strong> Each promotion has specific terms and conditions. Please review the details of each offer before claiming. Some promotions may have eligibility requirements or time limitations.
+            </p>
+            <p class="prm_section_text">
+                <strong>Claiming Bonuses:</strong> Most bonuses are claimed automatically or through a simple one-click process. Once claimed, bonuses are added to your account immediately and can be used right away.
+            </p>
+        </div>
+
+        <!-- Promotion FAQ -->
+        <div class="prm_info_section">
+            <h2 class="prm_section_title">Frequently Asked Questions</h2>
+            <p class="prm_section_text">
+                <strong>Q: Can I claim multiple promotions at once?</strong><br>
+                A: Yes! Most promotions can be combined. However, some exclusive offers may have restrictions. Check the terms of each promotion for details.
+            </p>
+            <p class="prm_section_text">
+                <strong>Q: Do bonus credits expire?</strong><br>
+                A: Bonus credits typically expire after 30 days of inactivity. However, loyalty points and VIP rewards may have different expiration policies. Check your account for specific details.
+            </p>
+            <p class="prm_section_text">
+                <strong>Q: Can I withdraw bonus credits?</strong><br>
+                A: Since Fortune Tower Casino is a social casino with virtual credits, bonus credits cannot be withdrawn as real money. They are for entertainment purposes only.
+            </p>
+            <p class="prm_section_text">
+                <strong>Q: How do I track my promotions?</strong><br>
+                A: You can view all active promotions and your progress in the "My Promotions" section of your account dashboard.
+            </p>
+        </div>
+
+        <!-- Promotion Terms -->
+        <div class="prm_info_section">
+            <h2 class="prm_section_title">General Promotion Terms</h2>
+            <p class="prm_section_text">
+                All promotions are subject to Fortune Tower Casino's Terms and Conditions. We reserve the right to modify, suspend, or cancel any promotion at any time. Promotions are available only to eligible players and may be subject to geographic restrictions.
+            </p>
+            <p class="prm_section_text">
+                Players who engage in fraudulent activity, abuse promotions, or violate our terms may have their accounts suspended and bonuses forfeited. Fortune Tower Casino reserves the right to investigate any suspicious activity.
+            </p>
+        </div>
+    </div>
+
+    <!-- Hidden Content -->
+    <div class="prm_hidden_content">
+        <p>Fortune Tower Casino Promotions and Bonuses</p>
+        <p>Daily rewards, welcome bonuses, VIP program, and special offers</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="prm_footer_wrapper">
+        <div class="prm_footer_container">
+            <div class="prm_responsible_play_footer">
+                <div class="prm_responsible_play_title">🎮 Responsible Gaming Notice</div>
+                <div class="prm_responsible_play_text">
+                    Fortune Tower is committed to promoting responsible gaming. If you feel you may have a gambling problem, please seek help. Visit www.gambleaware.org or contact the National Council on Problem Gambling for support and resources.
+                </div>
+            </div>
+
+            <div class="prm_footer_grid">
+                <div class="prm_footer_column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="play_game_x7k2m.html">Play Games</a></li>
+                        <li><a href="promotions_k6m9x.html">Promotions</a></li>
+                        <li><a href="faq_b2w7l.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="prm_footer_column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact_h8n3p.html">Contact Us</a></li>
+                        <li><a href="terms_q9r4n.html">Terms & Conditions</a></li>
+                        <li><a href="privacy_w2l8p.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div class="prm_footer_column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about_d4f1s.html">About Us</a></li>
+                        
+                        <li><a href="blog_c9m5x.html">Blog</a></li>
+                        <li><a href="partners_j1w8q.html">Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="prm_footer_column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="prm_footer_bottom">
+                <div style="margin-bottom: 1rem;">
+                    © 2024 Fortune Tower Casino. All rights reserved. | Domain: fortunetower.site
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <a href="terms_q9r4n.html" style="color: #b0b0b0; text-decoration: none;">Terms of Service</a>
+                    <span>|</span>
+                    <a href="privacy_w2l8p.html" style="color: #b0b0b0; text-decoration: none;">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="disclaimer_v5j3t.html" style="color: #b0b0b0; text-decoration: none;">Disclaimer</a>
+                    <span>|</span>
+                    <a href="#" style="color: #b0b0b0; text-decoration: none;">Responsible Gaming</a>
+                </div>
+                <div style="color: #606060; font-size: 0.8rem;">
+                    ⚠️ 18+ Only | Must be of legal age to access this site | Play Responsibly
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

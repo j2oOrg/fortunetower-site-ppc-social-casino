@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Games - Fortune Tower Casino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .plg_header_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid #e94560;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .plg_header_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plg_logo_section {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .plg_logo_icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .plg_nav_menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .plg_nav_item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .plg_nav_item a:hover {
+            color: #f39c12;
+        }
+
+        .plg_nav_item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e94560;
+            transition: width 0.3s ease;
+        }
+
+        .plg_nav_item a:hover::after {
+            width: 100%;
+        }
+
+        .plg_age_consent_header {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 0.8rem 1rem;
+            border-left: 4px solid #e94560;
+            font-size: 0.85rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .plg_main_content {
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .plg_page_title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .plg_game_container {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(15, 52, 96, 0.9) 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(233, 69, 96, 0.3);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .plg_game_info_bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+        }
+
+        .plg_game_name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f39c12;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plg_game_status {
+            background: rgba(233, 69, 96, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: #f39c12;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .plg_iframe_wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        .plg_iframe_wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .plg_game_description {
+            background: rgba(233, 69, 96, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            border-left: 4px solid #e94560;
+        }
+
+        .plg_description_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+
+        .plg_description_text {
+            color: #b0b0b0;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .plg_game_features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .plg_feature_item {
+            background: rgba(243, 156, 18, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(243, 156, 18, 0.2);
+            text-align: center;
+        }
+
+        .plg_feature_label {
+            color: #f39c12;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .plg_feature_value {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .plg_info_section {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 52, 96, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .plg_info_title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plg_info_text {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .plg_tips_list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .plg_tips_list li {
+            color: #b0b0b0;
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .plg_tips_list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        .plg_hidden_content_div {
+            display: none;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            position: absolute;
+            z-index: -9999;
+        }
+
+        .plg_footer_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 3rem 2rem 1rem;
+            border-top: 3px solid #e94560;
+            margin-top: auto;
+        }
+
+        .plg_footer_container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .plg_responsible_play_footer {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #e94560;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .plg_responsible_play_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .plg_responsible_play_text {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .plg_footer_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .plg_footer_column h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .plg_footer_column ul {
+            list-style: none;
+        }
+
+        .plg_footer_column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .plg_footer_column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .plg_footer_column ul li a:hover {
+            color: #e94560;
+        }
+
+        .plg_footer_bottom {
+            border-top: 1px solid rgba(233, 69, 96, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .plg_page_title {
+                font-size: 1.8rem;
+            }
+
+            .plg_main_content {
+                padding: 1rem;
+            }
+
+            .plg_game_info_bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="plg_header_wrapper">
+        <div class="plg_header_container">
+            <div class="plg_logo_section">
+                <div class="plg_logo_icon">⚡</div>
+                Fortune Tower
+            </div>
+            <ul class="plg_nav_menu">
+                <li class="plg_nav_item"><a href="index.html">Home</a></li>
+                <li class="plg_nav_item"><a href="play_game_x7k2m.html">Play Now</a></li>
+                <li class="plg_nav_item"><a href="terms_q9r4n.html">Terms</a></li>
+                <li class="plg_nav_item"><a href="privacy_w2l8p.html">Privacy</a></li>
+                <li class="plg_nav_item"><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="plg_age_consent_header">
+        ⚠️ IMPORTANT: This is a social casino for entertainment purposes only. You must be 18+ to access this site. By continuing, you confirm you are of legal age. Please play responsibly.
+    </div>
+
+    <!-- Main Content -->
+    <div class="plg_main_content">
+        <h1 class="plg_page_title">Play Premium Casino Games</h1>
+
+        <!-- Game Container -->
+        <div class="plg_game_container">
+            <div class="plg_game_info_bar">
+                <div class="plg_game_name">🎰 Ice Joker Deluxe</div>
+                <div class="plg_game_status">Live - Demo Mode</div>
+            </div>
+
+            <!-- Game Iframe -->
+            <div class="plg_iframe_wrapper">
+                <iframe src="https://asccw.playngonetwork.com/casino/ContainerLauncher?pid=2&gid=icejoker&lang=en_GB&practice=1&channel=desktop&demo=2" allowfullscreen="true" allow="autoplay"></iframe>
+            </div>
+
+            <!-- Game Description -->
+            <div class="plg_game_description">
+                <div class="plg_description_title">About This Game</div>
+                <div class="plg_description_text">
+                    Ice Joker Deluxe is an exciting frozen-themed slot game featuring stunning winter graphics and thrilling gameplay mechanics. With multiple paylines and bonus features, this game offers endless entertainment and winning opportunities. Experience the magic of the ice kingdom with every spin!
+                </div>
+            </div>
+
+            <!-- Game Features -->
+            <div class="plg_game_features">
+                <div class="plg_feature_item">
+                    <div class="plg_feature_label">Paylines</div>
+                    <div class="plg_feature_value">25</div>
+                </div>
+                <div class="plg_feature_item">
+                    <div class="plg_feature_label">RTP</div>
+                    <div class="plg_feature_value">96.5%</div>
+                </div>
+                <div class="plg_feature_item">
+                    <div class="plg_feature_label">Volatility</div>
+                    <div class="plg_feature_value">Medium</div>
+                </div>
+                <div class="plg_feature_item">
+                    <div class="plg_feature_label">Max Win</div>
+                    <div class="plg_feature_value">500x</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Play Section -->
+        <div class="plg_info_section">
+            <div class="plg_info_title">How to Play</div>
+            <div class="plg_info_text">
+                Playing Ice Joker Deluxe is simple and straightforward. Start by selecting your bet amount using the controls at the bottom of the game screen. Once you've set your desired wager, click the spin button to start the reels. Watch as the symbols align to create winning combinations across the paylines.
+            </div>
+            <ul class="plg_tips_list">
+                <li>Adjust your bet size before each spin</li>
+                <li>Use the autoplay feature for continuous spins</li>
+                <li>Trigger bonus rounds for extra rewards</li>
+                <li>Collect wild symbols for multiplied wins</li>
+                <li>Unlock free spins through scatter symbols</li>
+            </ul>
+        </div>
+
+        <!-- Game Features Section -->
+        <div class="plg_info_section">
+            <div class="plg_info_title">Special Features</div>
+            <div class="plg_info_text">
+                Ice Joker Deluxe includes several exciting features designed to enhance your gaming experience:
+            </div>
+            <ul class="plg_tips_list">
+                <li><strong>Wild Symbols:</strong> Substitute for other symbols to create winning combinations</li>
+                <li><strong>Scatter Symbols:</strong> Trigger free spins when you land three or more</li>
+                <li><strong>Bonus Rounds:</strong> Unlock special mini-games with additional prizes</li>
+                <li><strong>Multipliers:</strong> Increase your winnings during bonus features</li>
+                <li><strong>Progressive Jackpot:</strong> Compete for the ever-growing jackpot pool</li>
+            </ul>
+        </div>
+
+        <!-- Tips & Strategies Section -->
+        <div class="plg_info_section">
+            <div class="plg_info_title">Gaming Tips & Strategies</div>
+            <div class="plg_info_text">
+                While slot games are primarily based on luck, here are some tips to enhance your gaming experience:
+            </div>
+            <ul class="plg_tips_list">
+                <li>Set a budget before you start playing and stick to it</li>
+                <li>Play for entertainment, not as a way to make money</li>
+                <li>Take regular breaks during your gaming sessions</li>
+                <li>Understand the game's paytable and rules</li>
+                <li>Use the demo mode to practice before playing with real money</li>
+                <li>Never chase losses or bet more than you can afford</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hidden Content -->
+    <div class="plg_hidden_content_div">
+        <p>Ice Joker Deluxe slot game - Premium casino entertainment</p>
+        <p>Play free demo slots at Fortune Tower Casino</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="plg_footer_wrapper">
+        <div class="plg_footer_container">
+            <div class="plg_responsible_play_footer">
+                <div class="plg_responsible_play_title">🎮 Responsible Gaming Notice</div>
+                <div class="plg_responsible_play_text">
+                    Fortune Tower is committed to promoting responsible gaming. If you feel you may have a gambling problem, please seek help. Visit www.gambleaware.org or contact the National Council on Problem Gambling for support and resources.
+                </div>
+            </div>
+
+            <div class="plg_footer_grid">
+                <div class="plg_footer_column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="play_game_x7k2m.html">Play Games</a></li>
+                        <li><a href="promotions_k6m9x.html">Promotions</a></li>
+                        <li><a href="faq_b2w7l.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="plg_footer_column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact_h8n3p.html">Contact Us</a></li>
+                        <li><a href="terms_q9r4n.html">Terms & Conditions</a></li>
+                        <li><a href="privacy_w2l8p.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div class="plg_footer_column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about_d4f1s.html">About Us</a></li>
+                        
+                        <li><a href="blog_c9m5x.html">Blog</a></li>
+                        <li><a href="partners_j1w8q.html">Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="plg_footer_column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="plg_footer_bottom">
+                <div style="margin-bottom: 1rem;">
+                    © 2024 Fortune Tower Casino. All rights reserved. | Domain: fortunetower.site
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <a href="terms_q9r4n.html" style="color: #b0b0b0; text-decoration: none;">Terms of Service</a>
+                    <span>|</span>
+                    <a href="privacy_w2l8p.html" style="color: #b0b0b0; text-decoration: none;">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="disclaimer_v5j3t.html" style="color: #b0b0b0; text-decoration: none;">Disclaimer</a>
+                    <span>|</span>
+                    <a href="#" style="color: #b0b0b0; text-decoration: none;">Responsible Gaming</a>
+                </div>
+                <div style="color: #606060; font-size: 0.8rem;">
+                    ⚠️ 18+ Only | Must be of legal age to access this site | Play Responsibly
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

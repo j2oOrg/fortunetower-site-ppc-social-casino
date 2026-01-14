@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Fortune Tower Casino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .abt_header_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid #e94560;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .abt_header_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .abt_logo_section {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .abt_logo_icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .abt_nav_menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .abt_nav_item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .abt_nav_item a:hover {
+            color: #f39c12;
+        }
+
+        .abt_nav_item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e94560;
+            transition: width 0.3s ease;
+        }
+
+        .abt_nav_item a:hover::after {
+            width: 100%;
+        }
+
+        .abt_age_consent_header {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 0.8rem 1rem;
+            border-left: 4px solid #e94560;
+            font-size: 0.85rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .abt_main_content {
+            flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .abt_page_title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .abt_section {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 52, 96, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .abt_section_title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .abt_section_text {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .abt_values_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .abt_value_card {
+            background: rgba(233, 69, 96, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #e94560;
+            text-align: center;
+        }
+
+        .abt_value_icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .abt_value_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+
+        .abt_value_text {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .abt_hidden_content {
+            display: none;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            position: absolute;
+            z-index: -9999;
+        }
+
+        .abt_footer_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 3rem 2rem 1rem;
+            border-top: 3px solid #e94560;
+            margin-top: auto;
+        }
+
+        .abt_footer_container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .abt_responsible_play_footer {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #e94560;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .abt_responsible_play_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .abt_responsible_play_text {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .abt_footer_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .abt_footer_column h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .abt_footer_column ul {
+            list-style: none;
+        }
+
+        .abt_footer_column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .abt_footer_column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .abt_footer_column ul li a:hover {
+            color: #e94560;
+        }
+
+        .abt_footer_bottom {
+            border-top: 1px solid rgba(233, 69, 96, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .abt_page_title {
+                font-size: 1.8rem;
+            }
+
+            .abt_main_content {
+                padding: 1rem;
+            }
+
+            .abt_section {
+                padding: 1.5rem;
+            }
+
+            .abt_values_grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="abt_header_wrapper">
+        <div class="abt_header_container">
+            <div class="abt_logo_section">
+                <div class="abt_logo_icon">⚡</div>
+                Fortune Tower
+            </div>
+            <ul class="abt_nav_menu">
+                <li class="abt_nav_item"><a href="index.html">Home</a></li>
+                <li class="abt_nav_item"><a href="play_game_x7k2m.html">Play Now</a></li>
+                <li class="abt_nav_item"><a href="terms_q9r4n.html">Terms</a></li>
+                <li class="abt_nav_item"><a href="privacy_w2l8p.html">Privacy</a></li>
+                <li class="abt_nav_item"><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="abt_age_consent_header">
+        ⚠️ IMPORTANT: This is a social casino for entertainment purposes only. You must be 18+ to access this site. By continuing, you confirm you are of legal age. Please play responsibly.
+    </div>
+
+    <!-- Main Content -->
+    <div class="abt_main_content">
+        <h1 class="abt_page_title">About Fortune Tower Casino</h1>
+
+        <!-- Our Story -->
+        <div class="abt_section">
+            <h2 class="abt_section_title">Our Story</h2>
+            <p class="abt_section_text">
+                Fortune Tower Casino was founded with a simple mission: to provide world-class entertainment through innovative social gaming experiences. Since our inception, we've grown to become one of the leading social casino platforms, trusted by hundreds of thousands of players worldwide.
+            </p>
+            <p class="abt_section_text">
+                Our journey began with a vision to create a platform where players could enjoy the excitement of casino gaming in a safe, responsible, and entertaining environment. Over the years, we've continuously evolved and improved our offerings to meet the changing needs and preferences of our diverse player base.
+            </p>
+            <p class="abt_section_text">
+                Today, Fortune Tower Casino stands as a testament to our commitment to excellence, innovation, and player satisfaction. We're proud of what we've accomplished and excited about the future possibilities.
+            </p>
+        </div>
+
+        <!-- Our Mission -->
+        <div class="abt_section">
+            <h2 class="abt_section_title">Our Mission</h2>
+            <p class="abt_section_text">
+                At Fortune Tower Casino, our mission is to deliver exceptional entertainment experiences through innovative gaming technology while maintaining the highest standards of integrity, security, and responsible gaming practices.
+            </p>
+            <p class="abt_section_text">
+                We believe that gaming should be fun, fair, and accessible to everyone. We're committed to creating an inclusive community where players from all backgrounds can enjoy our games and connect with fellow enthusiasts.
+            </p>
+        </div>
+
+        <!-- Our Values -->
+        <div class="abt_section">
+            <h2 class="abt_section_title">Our Core Values</h2>
+            <div class="abt_values_grid">
+                <div class="abt_value_card">
+                    <div class="abt_value_icon">🎯</div>
+                    <div class="abt_value_title">Excellence</div>
+                    <div class="abt_value_text">We strive for excellence in everything we do, from game design to customer service.</div>
+                </div>
+
+                <div class="abt_value_card">
+                    <div class="abt_value_icon">🤝</div>
+                    <div class="abt_value_title">Integrity</div>
+                    <div class="abt_value_text">We operate with complete transparency and honesty in all our dealings.</div>
+                </div>
+
+                <div class="abt_value_card">
+                    <div class="abt_value_icon">🔒</div>
+                    <div class="abt_value_title">Security</div>
+                    <div class="abt_value_text">We prioritize the safety and security of our players' data and accounts.</div>
+                </div>
+
+                <div class="abt_value_card">
+                    <div class="abt_value_icon">🌟</div>
+                    <div class="abt_value_title">Innovation</div>
+                    <div class="abt_value_text">We continuously innovate to bring new and exciting experiences to our players.</div>
+                </div>
+
+                <div class="abt_value_card">
+                    <div class="abt_value_icon">❤️</div>
+                    <div class="abt_value_title">Responsibility</div>
+                    <div class="abt_value_text">We promote responsible gaming and support player wellbeing.</div>
+                </div>
+
+                <div class="abt_value_card">
+                    <div class="abt_value_icon">👥</div>
+                    <div class="abt_value_title">Community</div>
+                    <div class="abt_value_text">We foster a vibrant community where players can connect and share experiences.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Us -->
+        <div class="abt_section">
+            <h2 class="abt_section_title">Why Choose Fortune Tower Casino?</h2>
+            <p class="abt_section_text">
+                <strong>Unmatched Game Selection:</strong> With over 150 games from leading developers, we offer something for every player preference. Our diverse portfolio includes classic slots, modern video slots, and specialty games.
+            </p>
+            <p class="abt_section_text">
+                <strong>Generous Rewards Program:</strong> Our loyalty program is one of the most generous in the industry. Earn points with every game, complete daily challenges, and unlock exclusive rewards.
+            </p>
+            <p class="abt_section_text">
+                <strong>24/7 Customer Support:</strong> Our dedicated support team is available around the clock to assist you with any questions or concerns. We pride ourselves on fast response times and helpful solutions.
+            </p>
+            <p class="abt_section_text">
+                <strong>Advanced Security:</strong> We use industry-leading encryption and security protocols to protect your personal information and ensure a safe gaming environment.
+            </p>
+            <p class="abt_section_text">
+                <strong>Mobile Optimization:</strong> Play seamlessly on any device with our fully optimized mobile platform. Enjoy the same great experience whether you're on desktop, tablet, or smartphone.
+            </p>
+            <p class="abt_section_text">
+                <strong>Responsible Gaming Commitment:</strong> We're dedicated to promoting responsible gaming practices and provide tools and resources to help players maintain healthy gaming habits.
+            </p>
+        </div>
+
+        <!-- Our Team -->
+        <div class="abt_section">
+            <h2 class="abt_section_title">Our Team</h2>
+            <p class="abt_section_text">
+                Fortune Tower Casino is powered by a talented team of gaming professionals, software engineers, designers, and customer service experts. Our team is passionate about creating exceptional gaming experiences and dedicated to player satisfaction.
+            </p>
+            <p class="abt_section_text">
+                With decades of combined experience in the gaming industry, our team brings expertise, innovation, and a deep understanding of what players want. We're constantly working to improve our platform and introduce new features and games.
+            </p>
+        </div>
+
+        <!-- Industry Recognition -->
+        <div class="abt_section">
+            <h2 class="abt_section_title">Industry Recognition</h2>
+            <p class="abt_section_text">
+                Fortune Tower Casino has received numerous accolades and recognition from industry organizations and player communities. We're proud to be recognized for our commitment to quality, innovation, and player satisfaction.
+            </p>
+            <p class="abt_section_text">
+                Our games are certified by independent testing laboratories to ensure fairness and randomness. We comply with all applicable regulations and industry standards, and we're committed to maintaining the highest ethical standards.
+            </p>
+        </div>
+
+        <!-- Looking Forward -->
+        <div class="abt_section">
+            <h2 class="abt_section_title">Looking Forward</h2>
+            <p class="abt_section_text">
+                As we continue to grow, we're committed to expanding our game portfolio, enhancing our platform features, and improving our player experience. We're investing in cutting-edge technology to bring you the latest innovations in social gaming.
+            </p>
+            <p class="abt_section_text">
+                We're excited about the future and look forward to continuing to serve our players with the same dedication to excellence and innovation that has defined Fortune Tower Casino since day one.
+            </p>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="abt_section">
+            <h2 class="abt_section_title">Get In Touch</h2>
+            <p class="abt_section_text">
+                Have questions about Fortune Tower Casino? We'd love to hear from you! Contact us through any of the following channels:
+            </p>
+            <p class="abt_section_text">
+                <strong>Email:</strong> info@fortunetower.site<br>
+                <strong>Support:</strong> support@fortunetower.site<br>
+                <strong>Website:</strong> www.fortunetower.site<br>
+                <strong>Support Hours:</strong> 24/7 Available
+            </p>
+        </div>
+    </div>
+
+    <!-- Hidden Content -->
+    <div class="abt_hidden_content">
+        <p>Fortune Tower Casino - About Us Page</p>
+        <p>Leading social casino platform with premium games and rewards</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="abt_footer_wrapper">
+        <div class="abt_footer_container">
+            <div class="abt_responsible_play_footer">
+                <div class="abt_responsible_play_title">🎮 Responsible Gaming Notice</div>
+                <div class="abt_responsible_play_text">
+                    Fortune Tower is committed to promoting responsible gaming. If you feel you may have a gambling problem, please seek help. Visit www.gambleaware.org or contact the National Council on Problem Gambling for support and resources.
+                </div>
+            </div>
+
+            <div class="abt_footer_grid">
+                <div class="abt_footer_column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="play_game_x7k2m.html">Play Games</a></li>
+                        <li><a href="promotions_k6m9x.html">Promotions</a></li>
+                        <li><a href="faq_b2w7l.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="abt_footer_column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact_h8n3p.html">Contact Us</a></li>
+                        <li><a href="terms_q9r4n.html">Terms & Conditions</a></li>
+                        <li><a href="privacy_w2l8p.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div class="abt_footer_column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about_d4f1s.html">About Us</a></li>
+                        
+                        
+                        
+                    </ul>
+                </div>
+
+                <div class="abt_footer_column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="abt_footer_bottom">
+                <div style="margin-bottom: 1rem;">
+                    © 2024 Fortune Tower Casino. All rights reserved. | Domain: fortunetower.site
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <a href="terms_q9r4n.html" style="color: #b0b0b0; text-decoration: none;">Terms of Service</a>
+                    <span>|</span>
+                    <a href="privacy_w2l8p.html" style="color: #b0b0b0; text-decoration: none;">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="disclaimer_v5j3t.html" style="color: #b0b0b0; text-decoration: none;">Disclaimer</a>
+                    <span>|</span>
+                    <a href="#" style="color: #b0b0b0; text-decoration: none;">Responsible Gaming</a>
+                </div>
+                <div style="color: #606060; font-size: 0.8rem;">
+                    ⚠️ 18+ Only | Must be of legal age to access this site | Play Responsibly
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

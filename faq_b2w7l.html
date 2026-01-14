@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Fortune Tower Casino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .faq_header_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid #e94560;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .faq_header_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq_logo_section {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq_logo_icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .faq_nav_menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .faq_nav_item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .faq_nav_item a:hover {
+            color: #f39c12;
+        }
+
+        .faq_nav_item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e94560;
+            transition: width 0.3s ease;
+        }
+
+        .faq_nav_item a:hover::after {
+            width: 100%;
+        }
+
+        .faq_age_consent_header {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 0.8rem 1rem;
+            border-left: 4px solid #e94560;
+            font-size: 0.85rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .faq_main_content {
+            flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .faq_page_title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .faq_category {
+            margin-bottom: 3rem;
+        }
+
+        .faq_category_title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(233, 69, 96, 0.3);
+        }
+
+        .faq_item {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 52, 96, 0.8) 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq_item:hover {
+            border-color: rgba(233, 69, 96, 0.5);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.2);
+        }
+
+        .faq_question {
+            font-weight: 700;
+            color: #e94560;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        .faq_toggle_icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq_item.active .faq_toggle_icon {
+            transform: rotate(180deg);
+        }
+
+        .faq_answer {
+            color: #b0b0b0;
+            margin-top: 1rem;
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq_item.active .faq_answer {
+            display: block;
+        }
+
+        .faq_hidden_content {
+            display: none;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            position: absolute;
+            z-index: -9999;
+        }
+
+        .faq_footer_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 3rem 2rem 1rem;
+            border-top: 3px solid #e94560;
+            margin-top: auto;
+        }
+
+        .faq_footer_container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .faq_responsible_play_footer {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #e94560;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .faq_responsible_play_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .faq_responsible_play_text {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .faq_footer_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .faq_footer_column h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .faq_footer_column ul {
+            list-style: none;
+        }
+
+        .faq_footer_column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .faq_footer_column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .faq_footer_column ul li a:hover {
+            color: #e94560;
+        }
+
+        .faq_footer_bottom {
+            border-top: 1px solid rgba(233, 69, 96, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .faq_page_title {
+                font-size: 1.8rem;
+            }
+
+            .faq_main_content {
+                padding: 1rem;
+            }
+
+            .faq_question {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="faq_header_wrapper">
+        <div class="faq_header_container">
+            <div class="faq_logo_section">
+                <div class="faq_logo_icon">⚡</div>
+                Fortune Tower
+            </div>
+            <ul class="faq_nav_menu">
+                <li class="faq_nav_item"><a href="index.html">Home</a></li>
+                <li class="faq_nav_item"><a href="play_game_x7k2m.html">Play Now</a></li>
+                <li class="faq_nav_item"><a href="terms_q9r4n.html">Terms</a></li>
+                <li class="faq_nav_item"><a href="privacy_w2l8p.html">Privacy</a></li>
+                <li class="faq_nav_item"><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="faq_age_consent_header">
+        ⚠️ IMPORTANT: This is a social casino for entertainment purposes only. You must be 18+ to access this site. By continuing, you confirm you are of legal age. Please play responsibly.
+    </div>
+
+    <!-- Main Content -->
+    <div class="faq_main_content">
+        <h1 class="faq_page_title">Frequently Asked Questions</h1>
+
+        <!-- Getting Started Category -->
+        <div class="faq_category">
+            <h2 class="faq_category_title">Getting Started</h2>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>How do I create an account on Fortune Tower Casino?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Creating an account is simple and quick. Click the "Sign Up" button on the homepage, enter your email address, create a secure password, and verify your email. Once verified, your account is ready to use. You'll receive a welcome bonus automatically!
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Is Fortune Tower Casino free to play?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Yes! Fortune Tower Casino is completely free to play. We're a social casino that uses virtual credits for gameplay. There's no real money involved, and you can enjoy all our games without spending anything. We provide free credits to get you started!
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What is the minimum age requirement?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    You must be at least 18 years of age to access and use Fortune Tower Casino. By creating an account, you confirm that you meet this age requirement. We take age verification seriously and reserve the right to suspend accounts that violate this policy.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Can I play on mobile devices?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Absolutely! Fortune Tower Casino is fully optimized for mobile devices including smartphones and tablets. You can access the platform through your mobile browser or download our dedicated mobile app for the best experience.
+                </div>
+            </div>
+        </div>
+
+        <!-- Games & Gameplay Category -->
+        <div class="faq_category">
+            <h2 class="faq_category_title">Games & Gameplay</h2>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>How many games does Fortune Tower Casino offer?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    We offer over 150 different games including classic slots, video slots, and specialty games. Our game library is constantly updated with new titles to keep your experience fresh and exciting. New games are added regularly!
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Are the games fair and random?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Yes, all our games use certified random number generators (RNG) to ensure fair and unbiased outcomes. Our games are regularly tested and audited by independent third parties to maintain the highest standards of fairness and integrity.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What are virtual credits?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Virtual credits are the in-game currency used on Fortune Tower Casino. They have no real monetary value and are used solely for entertainment purposes. You can earn virtual credits through gameplay, daily bonuses, and promotions.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Can I win real money?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    No, Fortune Tower Casino is a social casino for entertainment purposes only. All winnings are in the form of virtual credits with no real monetary value. Virtual credits cannot be converted to real money or withdrawn.
+                </div>
+            </div>
+        </div>
+
+        <!-- Bonuses & Promotions Category -->
+        <div class="faq_category">
+            <h2 class="faq_category_title">Bonuses & Promotions</h2>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>How do I claim my welcome bonus?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Your welcome bonus is automatically credited to your account upon registration. You don't need to do anything special to claim it. The bonus credits will appear in your account immediately and can be used to play any game on our platform.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Do bonus credits expire?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Most bonus credits expire after 30 days of inactivity. However, loyalty points and VIP rewards may have different expiration policies. Check your account dashboard for specific details about your bonuses and their expiration dates.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Can I combine multiple promotions?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Yes, most promotions can be combined! However, some exclusive offers may have restrictions. We recommend reviewing the terms and conditions of each promotion to understand any limitations or requirements.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>How do I earn loyalty points?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    You earn loyalty points automatically with every game you play. For every 100 credits wagered, you earn 1 loyalty point. These points can be redeemed for bonus credits and exclusive rewards in our loyalty shop.
+                </div>
+            </div>
+        </div>
+
+        <!-- Account & Security Category -->
+        <div class="faq_category">
+            <h2 class="faq_category_title">Account & Security</h2>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>How do I reset my password?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Click the "Forgot Password" link on the login page. Enter your email address, and we'll send you a password reset link. Follow the instructions in the email to create a new password. Make sure to use a strong, unique password for security.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Is my personal information secure?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Yes, we take security very seriously. All personal information is encrypted using industry-standard SSL/TLS encryption. We comply with all applicable data protection regulations and regularly audit our security systems to ensure your information is safe.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Can I delete my account?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Yes, you can request account deletion by contacting our support team. Please note that once deleted, your account and all associated data cannot be recovered. Any remaining virtual credits will be forfeited.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What should I do if my account is compromised?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    If you suspect unauthorized access to your account, immediately change your password and contact our support team. We'll investigate the issue and take appropriate action to secure your account. Never share your login credentials with anyone.
+                </div>
+            </div>
+        </div>
+
+        <!-- Responsible Gaming Category -->
+        <div class="faq_category">
+            <h2 class="faq_category_title">Responsible Gaming</h2>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What is responsible gaming?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    Responsible gaming means playing for entertainment while maintaining control over your gaming habits. It involves setting limits, taking breaks, and never using gaming as a way to solve financial problems. Fortune Tower Casino is committed to promoting responsible gaming practices.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>How can I set gaming limits?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    You can set personal gaming limits in your account settings. Options include daily play time limits, session limits, and break reminders. These tools help you maintain healthy gaming habits and ensure you're playing responsibly.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>Where can I get help for problem gaming?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    If you're concerned about your gaming habits, several resources are available. Visit www.gambleaware.org or contact the National Council on Problem Gambling. Our support team can also provide information about responsible gaming resources and support services.
+                </div>
+            </div>
+        </div>
+
+        <!-- Support & Contact Category -->
+        <div class="faq_category">
+            <h2 class="faq_category_title">Support & Contact</h2>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>How do I contact customer support?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    You can reach our support team via email at support@fortunetower.site or through the live chat feature on our website. We also have a comprehensive help center with articles and guides. Our support team is available 24/7 to assist you.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>What is your response time for support inquiries?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    We aim to respond to all support inquiries within 24 hours. For urgent issues, our live chat support team is available immediately. VIP members receive priority support with faster response times.
+                </div>
+            </div>
+
+            <div class="faq_item">
+                <div class="faq_question">
+                    <span>How do I report a technical issue?</span>
+                    <span class="faq_toggle_icon">▼</span>
+                </div>
+                <div class="faq_answer">
+                    If you experience a technical issue, please contact our support team with details about the problem, including your device type, browser, and what you were doing when the issue occurred. This information helps us resolve the issue quickly.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden Content -->
+    <div class="faq_hidden_content">
+        <p>Fortune Tower Casino FAQ - Frequently Asked Questions</p>
+        <p>Help and support information for social casino gaming</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="faq_footer_wrapper">
+        <div class="faq_footer_container">
+            <div class="faq_responsible_play_footer">
+                <div class="faq_responsible_play_title">🎮 Responsible Gaming Notice</div>
+                <div class="faq_responsible_play_text">
+                    Fortune Tower is committed to promoting responsible gaming. If you feel you may have a gambling problem, please seek help. Visit www.gambleaware.org or contact the National Council on Problem Gambling for support and resources.
+                </div>
+            </div>
+
+            <div class="faq_footer_grid">
+                <div class="faq_footer_column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="play_game_x7k2m.html">Play Games</a></li>
+                        <li><a href="promotions_k6m9x.html">Promotions</a></li>
+                        <li><a href="faq_b2w7l.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="faq_footer_column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact_h8n3p.html">Contact Us</a></li>
+                        <li><a href="terms_q9r4n.html">Terms & Conditions</a></li>
+                        <li><a href="privacy_w2l8p.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div class="faq_footer_column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about_d4f1s.html">About Us</a></li>
+                        
+                        <li><a href="blog_c9m5x.html">Blog</a></li>
+                        <li><a href="partners_j1w8q.html">Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="faq_footer_column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq_footer_bottom">
+                <div style="margin-bottom: 1rem;">
+                    © 2024 Fortune Tower Casino. All rights reserved. | Domain: fortunetower.site
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <a href="terms_q9r4n.html" style="color: #b0b0b0; text-decoration: none;">Terms of Service</a>
+                    <span>|</span>
+                    <a href="privacy_w2l8p.html" style="color: #b0b0b0; text-decoration: none;">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="disclaimer_v5j3t.html" style="color: #b0b0b0; text-decoration: none;">Disclaimer</a>
+                    <span>|</span>
+                    <a href="#" style="color: #b0b0b0; text-decoration: none;">Responsible Gaming</a>
+                </div>
+                <div style="color: #606060; font-size: 0.8rem;">
+                    ⚠️ 18+ Only | Must be of legal age to access this site | Play Responsibly
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq_item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

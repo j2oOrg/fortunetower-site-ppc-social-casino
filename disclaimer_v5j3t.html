@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - Fortune Tower Casino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dsc_header_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid #e94560;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .dsc_header_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dsc_logo_section {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dsc_logo_icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .dsc_nav_menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .dsc_nav_item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .dsc_nav_item a:hover {
+            color: #f39c12;
+        }
+
+        .dsc_nav_item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e94560;
+            transition: width 0.3s ease;
+        }
+
+        .dsc_nav_item a:hover::after {
+            width: 100%;
+        }
+
+        .dsc_age_consent_header {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 0.8rem 1rem;
+            border-left: 4px solid #e94560;
+            font-size: 0.85rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .dsc_main_content {
+            flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .dsc_page_title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .dsc_last_updated {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1rem;
+            border-left: 4px solid #e94560;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .dsc_section {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 52, 96, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .dsc_section_title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dsc_section_text {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .dsc_subsection_title {
+            color: #e94560;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .dsc_list {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .dsc_list li {
+            color: #b0b0b0;
+            padding: 0.6rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .dsc_list li::before {
+            content: '⚠';
+            position: absolute;
+            left: 0;
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        .dsc_warning_box {
+            background: rgba(233, 69, 96, 0.15);
+            padding: 1.5rem;
+            border-left: 4px solid #e94560;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+            border-top: 2px solid #e94560;
+            border-right: 2px solid #e94560;
+            border-bottom: 2px solid #e94560;
+        }
+
+        .dsc_warning_title {
+            color: #e94560;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 1rem;
+        }
+
+        .dsc_warning_text {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .dsc_hidden_content {
+            display: none;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            position: absolute;
+            z-index: -9999;
+        }
+
+        .dsc_footer_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 3rem 2rem 1rem;
+            border-top: 3px solid #e94560;
+            margin-top: auto;
+        }
+
+        .dsc_footer_container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dsc_responsible_play_footer {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #e94560;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .dsc_responsible_play_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .dsc_responsible_play_text {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .dsc_footer_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dsc_footer_column h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dsc_footer_column ul {
+            list-style: none;
+        }
+
+        .dsc_footer_column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .dsc_footer_column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .dsc_footer_column ul li a:hover {
+            color: #e94560;
+        }
+
+        .dsc_footer_bottom {
+            border-top: 1px solid rgba(233, 69, 96, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .dsc_page_title {
+                font-size: 1.8rem;
+            }
+
+            .dsc_main_content {
+                padding: 1rem;
+            }
+
+            .dsc_section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="dsc_header_wrapper">
+        <div class="dsc_header_container">
+            <div class="dsc_logo_section">
+                <div class="dsc_logo_icon">⚡</div>
+                Fortune Tower
+            </div>
+            <ul class="dsc_nav_menu">
+                <li class="dsc_nav_item"><a href="index.html">Home</a></li>
+                <li class="dsc_nav_item"><a href="play_game_x7k2m.html">Play Now</a></li>
+                <li class="dsc_nav_item"><a href="terms_q9r4n.html">Terms</a></li>
+                <li class="dsc_nav_item"><a href="privacy_w2l8p.html">Privacy</a></li>
+                <li class="dsc_nav_item"><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dsc_age_consent_header">
+        ⚠️ IMPORTANT: This is a social casino for entertainment purposes only. You must be 18+ to access this site. By continuing, you confirm you are of legal age. Please play responsibly.
+    </div>
+
+    <!-- Main Content -->
+    <div class="dsc_main_content">
+        <h1 class="dsc_page_title">Disclaimer</h1>
+
+        <div class="dsc_last_updated">
+            Last Updated: January 2024 | Version 2.1
+        </div>
+
+        <!-- Section 1 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">1. General Disclaimer</h2>
+            <p class="dsc_section_text">
+                Fortune Tower Casino (fortunetower.site) provides this website and its content on an "as is" basis. The information, materials, and services provided on this website are provided without warranty of any kind, either express or implied.
+            </p>
+            <p class="dsc_section_text">
+                Fortune Tower Casino disclaims all warranties, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the website will be uninterrupted, error-free, or free from viruses or other harmful components.
+            </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">2. Entertainment Purpose Only</h2>
+            <div class="dsc_warning_box">
+                <div class="dsc_warning_title">⚠️ Important Notice</div>
+                <div class="dsc_warning_text">
+                    Fortune Tower Casino is a SOCIAL CASINO for entertainment purposes only. This is NOT a real money gambling platform. All games are played using virtual credits with no real monetary value. No real money is wagered, won, or lost.
+                </div>
+            </div>
+            <p class="dsc_section_text">
+                The games and services provided by Fortune Tower Casino are intended solely for entertainment and amusement. They should not be considered as a means to earn real money or as a substitute for real gambling services.
+            </p>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">3. No Financial Advice</h2>
+            <p class="dsc_section_text">
+                Nothing on Fortune Tower Casino should be construed as financial advice, investment advice, or any form of professional advice. The platform is provided for entertainment purposes only and should not be relied upon for making financial decisions.
+            </p>
+            <p class="dsc_section_text">
+                If you require financial or investment advice, please consult with a qualified financial advisor or professional.
+            </p>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">4. Limitation of Liability</h2>
+            <p class="dsc_section_text">
+                To the fullest extent permitted by applicable law, Fortune Tower Casino shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use the website or its services.
+            </p>
+            <p class="dsc_section_text">
+                This includes but is not limited to damages for loss of profits, goodwill, use, data, or other intangible losses, even if Fortune Tower Casino has been advised of the possibility of such damages.
+            </p>
+            <div class="dsc_subsection_title">Specific Limitations</div>
+            <ul class="dsc_list">
+                <li>We are not liable for technical issues or service interruptions</li>
+                <li>We are not liable for data loss or corruption</li>
+                <li>We are not liable for unauthorized account access</li>
+                <li>We are not liable for third-party content or services</li>
+                <li>We are not liable for user-generated content</li>
+            </ul>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">5. Third-Party Links & Content</h2>
+            <p class="dsc_section_text">
+                Fortune Tower Casino may contain links to third-party websites and services. We do not endorse, control, or assume responsibility for the content, accuracy, or practices of these external sites.
+            </p>
+            <p class="dsc_section_text">
+                Your use of third-party websites is at your own risk and subject to their terms and conditions. We recommend reviewing the privacy policies and terms of service of any third-party sites before providing personal information.
+            </p>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">6. Age Verification Disclaimer</h2>
+            <div class="dsc_warning_box">
+                <div class="dsc_warning_title">⚠️ Age Requirement</div>
+                <div class="dsc_warning_text">
+                    Fortune Tower Casino is intended for individuals 18 years of age and older. By accessing this website, you represent and warrant that you are of legal age in your jurisdiction. We are not responsible for unauthorized access by minors.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 7 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">7. Responsible Gaming Disclaimer</h2>
+            <p class="dsc_section_text">
+                While Fortune Tower Casino is a social casino with no real money involved, we encourage all users to maintain healthy gaming habits. Gaming should be viewed as entertainment only.
+            </p>
+            <div class="dsc_subsection_title">Warning Signs of Problem Gaming</div>
+            <ul class="dsc_list">
+                <li>Spending more time gaming than intended</li>
+                <li>Neglecting personal, family, or work responsibilities</li>
+                <li>Gaming to escape problems or negative emotions</li>
+                <li>Lying about gaming activities</li>
+                <li>Feeling anxious or irritable when not gaming</li>
+            </ul>
+            <p class="dsc_section_text" style="margin-top: 1rem;">
+                If you experience any of these signs, please seek help from a mental health professional or contact a gaming support organization.
+            </p>
+        </div>
+
+        <!-- Section 8 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">8. Technical Disclaimer</h2>
+            <p class="dsc_section_text">
+                Fortune Tower Casino does not guarantee that the website will be available at all times or that it will be free from errors, bugs, or security vulnerabilities. We are not responsible for:
+            </p>
+            <ul class="dsc_list">
+                <li>Service interruptions or downtime</li>
+                <li>Technical glitches or malfunctions</li>
+                <li>Data loss or corruption</li>
+                <li>Compatibility issues with certain devices or browsers</li>
+                <li>Performance issues or slow loading times</li>
+            </ul>
+        </div>
+
+        <!-- Section 9 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">9. User-Generated Content Disclaimer</h2>
+            <p class="dsc_section_text">
+                Fortune Tower Casino is not responsible for user-generated content, including comments, reviews, and feedback posted by users. We do not endorse or guarantee the accuracy of such content.
+            </p>
+            <p class="dsc_section_text">
+                Users are solely responsible for the content they post. By posting content, you grant Fortune Tower Casino a license to use, reproduce, and distribute such content.
+            </p>
+        </div>
+
+        <!-- Section 10 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">10. Changes to Disclaimer</h2>
+            <p class="dsc_section_text">
+                Fortune Tower Casino reserves the right to modify this disclaimer at any time. Changes will be effective immediately upon posting to the website. Your continued use of the platform following any changes constitutes your acceptance of the updated disclaimer.
+            </p>
+        </div>
+
+        <!-- Section 11 -->
+        <div class="dsc_section">
+            <h2 class="dsc_section_title">11. Contact Information</h2>
+            <p class="dsc_section_text">
+                If you have questions about this disclaimer or need to report issues, please contact us:
+            </p>
+            <ul class="dsc_list">
+                <li>Email: support@fortunetower.site</li>
+                <li>Website: www.fortunetower.site</li>
+                <li>Support Hours: 24/7 Available</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hidden Content -->
+    <div class="dsc_hidden_content">
+        <p>Fortune Tower Casino Disclaimer - Legal Notice</p>
+        <p>Social casino entertainment platform disclaimer and legal information</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="dsc_footer_wrapper">
+        <div class="dsc_footer_container">
+            <div class="dsc_responsible_play_footer">
+                <div class="dsc_responsible_play_title">🎮 Responsible Gaming Notice</div>
+                <div class="dsc_responsible_play_text">
+                    Fortune Tower is committed to promoting responsible gaming. If you feel you may have a gambling problem, please seek help. Visit www.gambleaware.org or contact the National Council on Problem Gambling for support and resources.
+                </div>
+            </div>
+
+            <div class="dsc_footer_grid">
+                <div class="dsc_footer_column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="play_game_x7k2m.html">Play Games</a></li>
+                        <li><a href="promotions_k6m9x.html">Promotions</a></li>
+                        <li><a href="faq_b2w7l.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="dsc_footer_column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact_h8n3p.html">Contact Us</a></li>
+                        <li><a href="terms_q9r4n.html">Terms & Conditions</a></li>
+                        <li><a href="privacy_w2l8p.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div class="dsc_footer_column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about_d4f1s.html">About Us</a></li>
+                        
+                        <li><a href="blog_c9m5x.html">Blog</a></li>
+                        <li><a href="partners_j1w8q.html">Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="dsc_footer_column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dsc_footer_bottom">
+                <div style="margin-bottom: 1rem;">
+                    © 2024 Fortune Tower Casino. All rights reserved. | Domain: fortunetower.site
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <a href="terms_q9r4n.html" style="color: #b0b0b0; text-decoration: none;">Terms of Service</a>
+                    <span>|</span>
+                    <a href="privacy_w2l8p.html" style="color: #b0b0b0; text-decoration: none;">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="disclaimer_v5j3t.html" style="color: #b0b0b0; text-decoration: none;">Disclaimer</a>
+                    <span>|</span>
+                    <a href="#" style="color: #b0b0b0; text-decoration: none;">Responsible Gaming</a>
+                </div>
+                <div style="color: #606060; font-size: 0.8rem;">
+                    ⚠️ 18+ Only | Must be of legal age to access this site | Play Responsibly
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Fortune Tower Casino</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .prv_header_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 1rem 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            border-bottom: 3px solid #e94560;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .prv_header_container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .prv_logo_section {
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .prv_logo_icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .prv_nav_menu {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .prv_nav_item a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .prv_nav_item a:hover {
+            color: #f39c12;
+        }
+
+        .prv_nav_item a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #e94560;
+            transition: width 0.3s ease;
+        }
+
+        .prv_nav_item a:hover::after {
+            width: 100%;
+        }
+
+        .prv_age_consent_header {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 0.8rem 1rem;
+            border-left: 4px solid #e94560;
+            font-size: 0.85rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .prv_main_content {
+            flex: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem;
+        }
+
+        .prv_page_title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #e94560 0%, #f39c12 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .prv_last_updated {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1rem;
+            border-left: 4px solid #e94560;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            color: #b0b0b0;
+            font-size: 0.9rem;
+        }
+
+        .prv_section {
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(15, 52, 96, 0.8) 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .prv_section_title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .prv_section_text {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .prv_subsection_title {
+            color: #e94560;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .prv_list {
+            list-style: none;
+            margin-left: 1rem;
+        }
+
+        .prv_list li {
+            color: #b0b0b0;
+            padding: 0.6rem 0;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .prv_list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #e94560;
+            font-weight: bold;
+        }
+
+        .prv_highlight_box {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #e94560;
+            border-radius: 5px;
+            margin: 1.5rem 0;
+        }
+
+        .prv_highlight_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .prv_highlight_text {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+        }
+
+        .prv_hidden_content {
+            display: none;
+            width: 0;
+            height: 0;
+            opacity: 0;
+            position: absolute;
+            z-index: -9999;
+        }
+
+        .prv_footer_wrapper {
+            background: linear-gradient(90deg, #0f3460 0%, #1a1a2e 50%, #0f3460 100%);
+            padding: 3rem 2rem 1rem;
+            border-top: 3px solid #e94560;
+            margin-top: auto;
+        }
+
+        .prv_footer_container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .prv_responsible_play_footer {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid #e94560;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+
+        .prv_responsible_play_title {
+            color: #f39c12;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .prv_responsible_play_text {
+            color: #b0b0b0;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .prv_footer_grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .prv_footer_column h3 {
+            color: #f39c12;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .prv_footer_column ul {
+            list-style: none;
+        }
+
+        .prv_footer_column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .prv_footer_column ul li a {
+            color: #b0b0b0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .prv_footer_column ul li a:hover {
+            color: #e94560;
+        }
+
+        .prv_footer_bottom {
+            border-top: 1px solid rgba(233, 69, 96, 0.2);
+            padding-top: 2rem;
+            text-align: center;
+            color: #808080;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .prv_page_title {
+                font-size: 1.8rem;
+            }
+
+            .prv_main_content {
+                padding: 1rem;
+            }
+
+            .prv_section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="prv_header_wrapper">
+        <div class="prv_header_container">
+            <div class="prv_logo_section">
+                <div class="prv_logo_icon">⚡</div>
+                Fortune Tower
+            </div>
+            <ul class="prv_nav_menu">
+                <li class="prv_nav_item"><a href="index.html">Home</a></li>
+                <li class="prv_nav_item"><a href="play_game_x7k2m.html">Play Now</a></li>
+                <li class="prv_nav_item"><a href="terms_q9r4n.html">Terms</a></li>
+                <li class="prv_nav_item"><a href="privacy_w2l8p.html">Privacy</a></li>
+                <li class="prv_nav_item"><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="prv_age_consent_header">
+        ⚠️ IMPORTANT: This is a social casino for entertainment purposes only. You must be 18+ to access this site. By continuing, you confirm you are of legal age. Please play responsibly.
+    </div>
+
+    <!-- Main Content -->
+    <div class="prv_main_content">
+        <h1 class="prv_page_title">Privacy Policy</h1>
+
+        <div class="prv_last_updated">
+            Last Updated: January 2024 | Version 2.1
+        </div>
+
+        <!-- Section 1 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">1. Introduction</h2>
+            <p class="prv_section_text">
+                Fortune Tower Casino ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website fortunetower.site and use our services.
+            </p>
+            <p class="prv_section_text">
+                Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our platform. Your use of Fortune Tower Casino indicates your acceptance of this Privacy Policy.
+            </p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">2. Information We Collect</h2>
+            <div class="prv_subsection_title">Information You Provide Directly</div>
+            <p class="prv_section_text">
+                We collect information that you voluntarily provide to us, including:
+            </p>
+            <ul class="prv_list">
+                <li>Account registration information (name, email, username, password)</li>
+                <li>Profile information and preferences</li>
+                <li>Communication preferences and contact information</li>
+                <li>Payment and billing information (if applicable)</li>
+                <li>Customer support inquiries and correspondence</li>
+                <li>Feedback, reviews, and survey responses</li>
+            </ul>
+
+            <div class="prv_subsection_title">Information Collected Automatically</div>
+            <p class="prv_section_text">
+                When you access our platform, we automatically collect certain information about your device and usage:
+            </p>
+            <ul class="prv_list">
+                <li>IP address and device identifiers</li>
+                <li>Browser type and version</li>
+                <li>Operating system information</li>
+                <li>Pages visited and time spent on each page</li>
+                <li>Referring website and exit pages</li>
+                <li>Clickstream data and interaction patterns</li>
+                <li>Cookies and similar tracking technologies</li>
+            </ul>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">3. How We Use Your Information</h2>
+            <p class="prv_section_text">
+                Fortune Tower Casino uses the collected information for various purposes:
+            </p>
+            <ul class="prv_list">
+                <li>To provide, maintain, and improve our services</li>
+                <li>To process account registration and authentication</li>
+                <li>To deliver customer support and respond to inquiries</li>
+                <li>To send promotional emails and marketing communications</li>
+                <li>To personalize your gaming experience</li>
+                <li>To analyze usage patterns and platform performance</li>
+                <li>To detect and prevent fraud and unauthorized access</li>
+                <li>To comply with legal obligations and regulations</li>
+                <li>To enforce our Terms and Conditions</li>
+            </ul>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">4. Data Security</h2>
+            <p class="prv_section_text">
+                Fortune Tower Casino implements comprehensive security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. Our security practices include:
+            </p>
+            <ul class="prv_list">
+                <li>SSL/TLS encryption for data transmission</li>
+                <li>Secure password storage using industry-standard hashing</li>
+                <li>Regular security audits and vulnerability assessments</li>
+                <li>Restricted access to personal information</li>
+                <li>Secure data backup and recovery procedures</li>
+                <li>Employee training on data protection practices</li>
+            </ul>
+
+            <div class="prv_highlight_box">
+                <div class="prv_highlight_title">Important Security Notice</div>
+                <div class="prv_highlight_text">
+                    While we implement robust security measures, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security of your information. You use our platform at your own risk.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">5. Cookies & Tracking Technologies</h2>
+            <p class="prv_section_text">
+                Fortune Tower Casino uses cookies and similar tracking technologies to enhance your experience and collect usage data. Cookies are small files stored on your device that help us remember your preferences and track your activity.
+            </p>
+            <div class="prv_subsection_title">Types of Cookies We Use</div>
+            <ul class="prv_list">
+                <li><strong>Essential Cookies:</strong> Required for platform functionality</li>
+                <li><strong>Performance Cookies:</strong> Analyze how users interact with our platform</li>
+                <li><strong>Functional Cookies:</strong> Remember your preferences and settings</li>
+                <li><strong>Marketing Cookies:</strong> Track advertising effectiveness</li>
+            </ul>
+            <p class="prv_section_text" style="margin-top: 1rem;">
+                You can control cookie settings through your browser preferences. However, disabling cookies may affect platform functionality.
+            </p>
+        </div>
+
+        <!-- Section 6 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">6. Third-Party Sharing</h2>
+            <p class="prv_section_text">
+                Fortune Tower Casino does not sell, trade, or rent your personal information to third parties. However, we may share information with:
+            </p>
+            <ul class="prv_list">
+                <li>Service providers who assist in platform operations</li>
+                <li>Payment processors for transaction handling</li>
+                <li>Analytics providers for usage analysis</li>
+                <li>Law enforcement when required by law</li>
+                <li>Business partners with your consent</li>
+            </ul>
+        </div>
+
+        <!-- Section 7 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">7. Your Privacy Rights</h2>
+            <p class="prv_section_text">
+                Depending on your location, you may have certain rights regarding your personal information:
+            </p>
+            <ul class="prv_list">
+                <li>Right to access your personal data</li>
+                <li>Right to correct inaccurate information</li>
+                <li>Right to request deletion of your data</li>
+                <li>Right to opt-out of marketing communications</li>
+                <li>Right to data portability</li>
+                <li>Right to restrict processing</li>
+            </ul>
+            <p class="prv_section_text" style="margin-top: 1rem;">
+                To exercise these rights, please contact us at privacy@fortunetower.site.
+            </p>
+        </div>
+
+        <!-- Section 8 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">8. Children's Privacy</h2>
+            <p class="prv_section_text">
+                Fortune Tower Casino is not intended for individuals under 18 years of age. We do not knowingly collect personal information from children. If we become aware that a child has provided us with personal information, we will take steps to delete such information and terminate the child's account.
+            </p>
+        </div>
+
+        <!-- Section 9 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">9. Data Retention</h2>
+            <p class="prv_section_text">
+                Fortune Tower Casino retains your personal information for as long as necessary to provide our services and fulfill the purposes outlined in this Privacy Policy. We may retain certain information for legal compliance, fraud prevention, and legitimate business purposes.
+            </p>
+            <p class="prv_section_text">
+                You may request deletion of your account and associated data at any time, subject to legal retention requirements.
+            </p>
+        </div>
+
+        <!-- Section 10 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">10. International Data Transfers</h2>
+            <p class="prv_section_text">
+                Your information may be transferred to, stored in, and processed in countries other than your country of residence. These countries may have data protection laws that differ from your home country. By using Fortune Tower Casino, you consent to the transfer of your information to countries outside your country of residence.
+            </p>
+        </div>
+
+        <!-- Section 11 -->
+        <div class="prv_section">
+            <h2 class="prv_section_title">11. Contact Us</h2>
+            <p class="prv_section_text">
+                If you have questions about this Privacy Policy or our privacy practices, please contact us:
+            </p>
+            <ul class="prv_list">
+                <li>Email: privacy@fortunetower.site</li>
+                <li>Website: www.fortunetower.site</li>
+                <li>Support: support@fortunetower.site</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Hidden Content -->
+    <div class="prv_hidden_content">
+        <p>Fortune Tower Casino Privacy Policy - Data Protection</p>
+        <p>Personal information protection and privacy practices</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="prv_footer_wrapper">
+        <div class="prv_footer_container">
+            <div class="prv_responsible_play_footer">
+                <div class="prv_responsible_play_title">🎮 Responsible Gaming Notice</div>
+                <div class="prv_responsible_play_text">
+                    Fortune Tower is committed to promoting responsible gaming. If you feel you may have a gambling problem, please seek help. Visit www.gambleaware.org or contact the National Council on Problem Gambling for support and resources.
+                </div>
+            </div>
+
+            <div class="prv_footer_grid">
+                <div class="prv_footer_column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="play_game_x7k2m.html">Play Games</a></li>
+                        <li><a href="promotions_k6m9x.html">Promotions</a></li>
+                        <li><a href="faq_b2w7l.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="prv_footer_column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="contact_h8n3p.html">Contact Us</a></li>
+                        <li><a href="terms_q9r4n.html">Terms & Conditions</a></li>
+                        <li><a href="privacy_w2l8p.html">Privacy Policy</a></li>
+                        <li><a href="disclaimer_v5j3t.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+
+                <div class="prv_footer_column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about_d4f1s.html">About Us</a></li>
+                        
+                        <li><a href="blog_c9m5x.html">Blog</a></li>
+                        <li><a href="partners_j1w8q.html">Partners</a></li>
+                    </ul>
+                </div>
+
+                <div class="prv_footer_column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="prv_footer_bottom">
+                <div style="margin-bottom: 1rem;">
+                    © 2024 Fortune Tower Casino. All rights reserved. | Domain: fortunetower.site
+                </div>
+                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <a href="terms_q9r4n.html" style="color: #b0b0b0; text-decoration: none;">Terms of Service</a>
+                    <span>|</span>
+                    <a href="privacy_w2l8p.html" style="color: #b0b0b0; text-decoration: none;">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="disclaimer_v5j3t.html" style="color: #b0b0b0; text-decoration: none;">Disclaimer</a>
+                    <span>|</span>
+                    <a href="#" style="color: #b0b0b0; text-decoration: none;">Responsible Gaming</a>
+                </div>
+                <div style="color: #606060; font-size: 0.8rem;">
+                    ⚠️ 18+ Only | Must be of legal age to access this site | Play Responsibly
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
